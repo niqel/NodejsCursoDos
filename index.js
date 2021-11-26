@@ -1,24 +1,7 @@
-const os = require('os');
-const fs = require('fs');
+const http = require('http');
 
-
-console.log(os.platform());
-console.log(os.release());
-console.log(os.freemem());
-console.log(os.totalmem());
-
-// fs.writeFile('./texto.txt', 'lineaUno', function(err){
-//     if(err){
-//         console.log(err);
-//     }
-//     console.log('archivo creado');
-// });
-
-console.log('ultima linea de codigo');
-
-fs.readFile('./texto.txt', function(eror, data){
-    if(eror){
-        console.log(eror);
-    }
-    console.log(data.toString());
-});
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-type': 'text/html'});
+    res.write('<h1>Hola mundo</h1>');
+    res.end();
+}).listen(3000);
